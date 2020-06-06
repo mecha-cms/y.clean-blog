@@ -1,16 +1,5 @@
 <?php
 
-// Wrap description data with paragraph tag(s) if needed
-Hook::set('page.description', function($description) {
-    if ($description && false === strpos($description, '</p>')) {
-        return '<p>' . strtr(trim(n($description)), [
-            "\n\n" => '</p><p>',
-            "\n" => '<br>'
-        ]) . '</p>';
-    }
-    return $description;
-});
-
 // Tweak(s)
 Hook::set('page.content', function($content) {
     if (!$content) {
@@ -30,8 +19,8 @@ Hook::set('page.content', function($content) {
         $content = str_replace('<' . $tag . '>', '<' . $tag . ' class="' . $class . '">', $content);
     };
     $class_set('blockquote', 'blockquote', $content);
-    $class_set('figure', 'figure', $content);
     $class_set('figcaption', 'figure-caption', $content);
+    $class_set('figure', 'figure', $content);
     $class_set('img', 'img-fluid', $content);
     $class_set('table', 'table', $content);
     return $content;
