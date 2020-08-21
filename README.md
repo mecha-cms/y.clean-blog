@@ -6,6 +6,10 @@ Clean Blog Layout for Mecha
 Release Notes
 -------------
 
+### 1.1.0
+
+ - Updated for Mecha 2.4.0.
+
 ### 1.0.0
 
  - Initial release.

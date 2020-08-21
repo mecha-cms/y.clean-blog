@@ -23,12 +23,12 @@
       <?php endforeach; ?>
       <div class="clearfix">
         <?php if ($prev = $pager->prev): ?>
-        <a class="btn btn-primary float-left" href="<?= $prev; ?>" rel="prev">
+        <a class="btn btn-primary float-left" href="<?= $prev->url; ?>" rel="prev">
           &larr; <?= i('Newer Posts'); ?>
         </a>
         <?php endif; ?>
         <?php if ($next = $pager->next): ?>
-        <a class="btn btn-primary float-right" href="<?= $next; ?>" rel="next">
+        <a class="btn btn-primary float-right" href="<?= $next->url; ?>" rel="next">
           <?= i('Older Posts'); ?> &rarr;
         </a>
         <?php endif; ?>
