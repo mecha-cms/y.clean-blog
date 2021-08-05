@@ -1,5 +1,5 @@
-Clean Blog Layout for Mecha
-===========================
+Clean Blog Layout for [Mecha](https://github.com/mecha-cms/mecha)
+=================================================================
 
 ![Clean Blog](https://user-images.githubusercontent.com/1669261/72221035-5faa2800-3589-11ea-9598-64142433c693.png)
 
