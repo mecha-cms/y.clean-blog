@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "@taufik-nurrohman/factory": "^1.0.8"
+  },
+  "scripts": {
+    "pack": "pack --clean=false --from=.factory --to=."
+  }
+}

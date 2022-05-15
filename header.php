@@ -1,15 +1,26 @@
-<header class="masthead"<?= ($image = $page->image) ? ' style="background-image: url(\'' . $image . '\');"' : ""; ?>>
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading">
+<header class="masthead"<?= ($cover = $page->exist ? ($page->cover ?: $page->image) : "") ? ' style="background-image: url(\'' . $cover . '\');"' : ""; ?>>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="<?= $site->is('pages') ? 'site' : 'post'; ?>-heading">
           <h1>
-            <?= $page->title; ?>
+            <?= $page->exist ? $page->title : i('Error'); ?>
           </h1>
-          <span class="subheading">
-            <?= w($page->description, ['a', 'abbr', 'b', 'code', 'dfn', 'em', 'kbd', 'strong']); ?>
-          </span>
+          <?php if ($site->is('pages')): ?>
+            <span class="subheading">
+              <?= $page->exist ? $page->description : i('404 not found.'); ?>
+            </span>
+          <?php else: ?>
+            <h2 class="subheading">
+              <?= $page->exist ? $page->description : i('404 not found.'); ?>
+            </h2>
+            <span class="meta">
+              <?= i('Posted by %s on %s', [
+                  self::get('page.author', ['author' => $page->author]),
+                  $page->time('%B %d, %Y')
+              ]); ?>
+            </span>
+          <?php endif; ?>
         </div>
       </div>
     </div>
