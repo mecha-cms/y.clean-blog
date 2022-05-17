@@ -22,7 +22,7 @@
           </article>
           <hr class="my-4">
         <?php endforeach; ?>
-        <div class="d-flex justify-content-between mb-4">
+        <div class="d-flex justify-content-<?= $pager->next && $pager->prev ? 'between' : ($pager->next ? 'end' : ($pager->prev ? 'start' : 'between')); ?> mb-4">
           <?php if ($prev = $pager->prev): ?>
             <a class="btn btn-primary text-uppercase" href="<?= $prev->link; ?>" rel="prev">
               &larr; <?= i('Newer Posts'); ?>
