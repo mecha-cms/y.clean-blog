@@ -24,12 +24,28 @@ Hook::set('page.content', function($content) use($class_set) {
     $class_set('figure', 'figure', $content);
     $class_set('img', 'img-fluid', $content);
     $class_set('table', 'table', $content);
+    if (false !== strpos($content, '</audio>')) {
+        $content = preg_replace('/<p(?:\s[^>]*)?>\s*<audio([>\s])/', '<audio$1', $content);
+        $content = preg_replace('/<\/audio>\s*<\/p>/', '</audio>', $content);
+        $content = preg_replace_callback('/<audio(?:\s[^>]*)?>[\s\S]*?<\/audio>/', function($m) {
+            return '<p class="ratio py-4">' . $m[0] . '</p>';
+        }, $content);
+    }
+    if (false !== strpos($content, '</video>')) {
+        $content = preg_replace('/<p(?:\s[^>]*)?>\s*<video([>\s])/', '<video$1', $content);
+        $content = preg_replace('/<\/video>\s*<\/p>/', '</video>', $content);
+        $content = preg_replace_callback('/<video(?:\s[^>]*)?>[\s\S]*?<\/video>/', function($m) {
+            return '<p class="ratio ratio-16x9">' . $m[0] . '</p>';
+        }, $content);
+    }
     return $content;
 });
 
-Asset::set('index.min.css', 20);
+$z = defined('TEST') && TEST ? '.' : '.min.';
 
-Asset::set('index.min.js', 20);
+Asset::set('index' . $z . 'css', 20);
+
+Asset::set('index' . $z . 'js', 20);
 
 // Create site link data to be used in navigation
 $GLOBALS['links'] = new Anemone((static function($links, $state, $url) {

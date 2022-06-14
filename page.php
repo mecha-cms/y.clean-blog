@@ -5,7 +5,7 @@
       <div class="col-md-10 col-lg-8 col-xl-7">
         <?php if ($page->exist): ?>
           <?= $page->content; ?>
-          <?php if (!empty($state->x->comment)): ?>
+          <?php if (isset($state->x->comment) && $site->has('parent')): ?>
             <hr class="my-4">
             <?= self::comments(); ?>
           <?php endif; ?>
