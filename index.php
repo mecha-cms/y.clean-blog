@@ -1,8 +1,8 @@
 <?php
 
-$class_set = static function($tag, $class, &$content) {
+$class_set = static function ($tag, $class, &$content) {
     if (false !== strpos($content, '<' . $tag . ' ')) {
-        $content = preg_replace_callback('/<' . $tag . '(\s[^>]*)?>/', function($m) use($class, $tag) {
+        $content = preg_replace_callback('/<' . $tag . '(\s[^>]*)?>/', function ($m) use ($class, $tag) {
             if (false !== strpos($m[1], ' class="')) {
                 $m[1] = str_replace(' class="', ' class="' . $class . ' ', $m[1]);
             } else {
@@ -15,7 +15,7 @@ $class_set = static function($tag, $class, &$content) {
 };
 
 // Tweak(s)
-Hook::set('page.content', function($content) use($class_set) {
+Hook::set('page.content', function ($content) use ($class_set) {
     if (!$content) {
         return $content;
     }
@@ -27,14 +27,14 @@ Hook::set('page.content', function($content) use($class_set) {
     if (false !== strpos($content, '</audio>')) {
         $content = preg_replace('/<p(?:\s[^>]*)?>\s*<audio([>\s])/', '<audio$1', $content);
         $content = preg_replace('/<\/audio>\s*<\/p>/', '</audio>', $content);
-        $content = preg_replace_callback('/<audio(?:\s[^>]*)?>[\s\S]*?<\/audio>/', function($m) {
+        $content = preg_replace_callback('/<audio(?:\s[^>]*)?>[\s\S]*?<\/audio>/', function ($m) {
             return '<p class="ratio py-4">' . $m[0] . '</p>';
         }, $content);
     }
     if (false !== strpos($content, '</video>')) {
         $content = preg_replace('/<p(?:\s[^>]*)?>\s*<video([>\s])/', '<video$1', $content);
         $content = preg_replace('/<\/video>\s*<\/p>/', '</video>', $content);
-        $content = preg_replace_callback('/<video(?:\s[^>]*)?>[\s\S]*?<\/video>/', function($m) {
+        $content = preg_replace_callback('/<video(?:\s[^>]*)?>[\s\S]*?<\/video>/', function ($m) {
             return '<p class="ratio ratio-16x9">' . $m[0] . '</p>';
         }, $content);
     }
@@ -48,7 +48,7 @@ Asset::set('index' . $z . 'css', 20);
 Asset::set('index' . $z . 'js', 20);
 
 // Create site link data to be used in navigation
-$GLOBALS['links'] = new Anemone((static function($links, $state, $url) {
+$GLOBALS['links'] = new Anemone((static function ($links, $state, $url) {
     $index = LOT . D . 'page' . D . trim(strtr($state->route, '/', D), D) . '.page';
     $path = $url->path . '/';
     foreach (g(LOT . D . 'page', 'page') as $k => $v) {
