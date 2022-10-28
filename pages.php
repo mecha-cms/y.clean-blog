@@ -24,12 +24,12 @@
         <?php endforeach; ?>
         <div class="d-flex justify-content-<?= $pager->next && $pager->prev ? 'between' : ($pager->next ? 'end' : ($pager->prev ? 'start' : 'between')); ?> mb-4">
           <?php if ($prev = $pager->prev): ?>
-            <a class="btn btn-primary text-uppercase" href="<?= $prev->link; ?>" rel="prev">
+            <a class="btn btn-primary text-uppercase" href="<?= From::HTML(($prev->link ?? $prev->url ?? "") . $url->query . $url->hash); ?>" rel="prev">
               &larr; <?= i('Newer Posts'); ?>
             </a>
           <?php endif; ?>
           <?php if ($next = $pager->next): ?>
-            <a class="btn btn-primary text-uppercase" href="<?= $next->link; ?>" rel="next">
+            <a class="btn btn-primary text-uppercase" href="<?= From::HTML(($next->link ?? $next->url ?? "") . $url->query . $url->hash); ?>" rel="next">
               <?= i('Older Posts'); ?> &rarr;
             </a>
           <?php endif; ?>

@@ -1,5 +1,14 @@
 <?php
 
+$defaults = [
+    'x.comment.page.type' => 'Markdown',
+    'x.page.page.type' => 'Markdown'
+];
+
+foreach ($defaults as $k => $v) {
+    !State::get($k) && State::set($k, $v);
+}
+
 $class_set = static function ($tag, $class, &$content) {
     if (false !== strpos($content, '<' . $tag . ' ')) {
         $content = preg_replace_callback('/<' . $tag . '(\s[^>]*)?>/', function ($m) use ($class, $tag) {
