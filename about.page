@@ -2,6 +2,9 @@
 title: Clean Blog
 description: A stylish, responsive blog theme for Bootstrap.
 image: /lot/y/clean-blog/index.png
+images:
+- /lot/y/clean-blog/index.png
+- /lot/y/clean-blog/index/1.png
 link: 'https://github.com/BlackrockDigital/startbootstrap-clean-blog'
 author: Taufik Nurrohman
 version: 2.0.0
