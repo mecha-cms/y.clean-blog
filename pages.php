@@ -5,7 +5,7 @@
       <?php if ($page->exist): ?>
         <?php foreach ($pages as $page): ?>
           <article class="post-preview">
-            <a href="<?= $page->url; ?>">
+            <a href="<?= eat($page->url); ?>">
               <h2 class="post-title">
                 <?= w($page->title, ['abbr', 'b', 'code', 'dfn', 'em', 'i', 'strong']); ?>
               </h2>
@@ -24,12 +24,12 @@
         <?php endforeach; ?>
         <div class="d-flex justify-content-<?= $pager->next && $pager->prev ? 'between' : ($pager->next ? 'end' : ($pager->prev ? 'start' : 'between')); ?> mb-4">
           <?php if ($prev = $pager->prev): ?>
-            <a class="btn btn-primary text-uppercase" href="<?= From::HTML(($prev->link ?? $prev->url ?? "") . $url->query . $url->hash); ?>" rel="prev">
+            <a class="btn btn-primary text-uppercase" href="<?= eat($prev->link ?? $prev->url ?? ""); ?>" rel="prev">
               &larr; <?= i('Newer Posts'); ?>
             </a>
           <?php endif; ?>
           <?php if ($next = $pager->next): ?>
-            <a class="btn btn-primary text-uppercase" href="<?= From::HTML(($next->link ?? $next->url ?? "") . $url->query . $url->hash); ?>" rel="next">
+            <a class="btn btn-primary text-uppercase" href="<?= eat($next->link ?? $next->url ?? ""); ?>" rel="next">
               <?= i('Older Posts'); ?> &rarr;
             </a>
           <?php endif; ?>
