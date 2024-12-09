@@ -1,11 +1,11 @@
 <?php
 
-$defaults = [
+$states = [
     'x.comment.page.type' => 'Markdown',
     'x.page.page.type' => 'Markdown'
 ];
 
-foreach ($defaults as $k => $v) {
+foreach ($states as $k => $v) {
     !State::get($k) && State::set($k, $v);
 }
 
@@ -57,8 +57,8 @@ Asset::set('index' . $z . 'css', 20);
 Asset::set('index' . $z . 'js', 20);
 
 // Create site link data to be used in navigation
-$GLOBALS['links'] = new Anemone((static function ($links, $state, $url) {
-    $index = LOT . D . 'page' . D . trim(strtr($state->route, '/', D), D) . '.page';
+lot('links', $links = new Anemone((static function ($links, $state, $url) {
+    $index = LOT . D . 'page' . D . trim(strtr($state->route ?? 'index', '/', D), D) . '.page';
     $path = $url->path . '/';
     foreach (g(LOT . D . 'page', 'page') as $k => $v) {
         // Exclude home page
@@ -72,4 +72,4 @@ $GLOBALS['links'] = new Anemone((static function ($links, $state, $url) {
     }
     ksort($links);
     return $links;
-})([], $state, $url));
+})([], $state, $url)));

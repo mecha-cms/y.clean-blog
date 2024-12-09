@@ -7,7 +7,23 @@ images:
 - /lot/y/clean-blog/index/1.png
 link: 'https://github.com/BlackrockDigital/startbootstrap-clean-blog'
 author: Taufik Nurrohman
-version: 2.0.0
+version: 2.0.1
 ...
 
 A stylish, responsive blog theme for Bootstrap created by [Start Bootstrap](https://startbootstrap.com).
+
+### Usage
+
+Typical page data structure for this layout:
+
+~~~ .yaml
+---
+title: Post Title
+description: Post description.
+author: Post Author
+type: Markdown
+cover: /image/2024/cover.jpg
+...
+
+Post content.
+~~~

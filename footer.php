@@ -29,7 +29,7 @@
           </li>
         </ul>
         <div class="small text-center text-muted fst-italic">
-          &#x00A9; <a href="<?= eat($url); ?>">
+          &#x00a9; <a href="<?= eat($url); ?>">
             <?= $site->title; ?>
           </a> <?= $date->year; ?> &#x00B7; <?= i('Powered by %s', ['<a href="https://mecha-cms.com">Mecha ' . VERSION . '</a>']); ?>
         </div>
