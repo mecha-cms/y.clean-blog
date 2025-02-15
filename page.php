@@ -10,7 +10,7 @@
             <?= self::comments(); ?>
           <?php endif; ?>
         <?php else: ?>
-          <p role="status">
+          <p class="alert alert-danger m-0 mb-4" role="status">
             <?= i('%s does not exist.', 'Page'); ?>
           </p>
         <?php endif; ?>

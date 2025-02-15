@@ -14,8 +14,9 @@
           </a>
         </li>
         <?php foreach ($links as $link): ?>
+          <?php $children = $link->children ?? false; ?>
           <li class="nav-item">
-            <a class="<?= $link->current ? 'active ' : ""; ?>nav-link px-lg-3 py-3 py-lg-4" href="<?= eat($link->url); ?>">
+            <a class="<?= $link->current ? 'active ' : ""; ?>nav-link px-lg-3 py-3 py-lg-4" href="<?= eat($link->url . ($children && $children->count ? '/1' : "")); ?>">
               <?= $link->title; ?>
             </a>
           </li>
