@@ -6,7 +6,8 @@
         <?php if ($pages->count): ?>
           <?php foreach ($pages as $page): ?>
             <article class="post-preview">
-              <a href="<?= eat($page->url); ?>">
+              <?php $children = $page->children ?? false; ?>
+              <a href="<?= eat($page->url . ($children && $children->count ? '/1' : "")); ?>">
                 <h2 class="post-title">
                   <?= w($page->title, ['abbr', 'b', 'code', 'dfn', 'em', 'i', 'strong']); ?>
                 </h2>
